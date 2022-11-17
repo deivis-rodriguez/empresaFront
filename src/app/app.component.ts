@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { empleados } from './empleados';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +7,14 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'empresa';
+  public title: string = 'aplicación de mi empresa';
+  public listaEmpleados = empleados;
+
+  constructor() {
+  }
+
+  saludar(){
+    alert('holas')
+  }
+
 }
