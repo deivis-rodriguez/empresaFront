@@ -1,0 +1,11 @@
+.contenedor {
+    display: flex;
+}
+
+.contenedor-lista {
+    width: 48%;
+}
+
+app-detalle-empleado {
+    width: 48%;
+}

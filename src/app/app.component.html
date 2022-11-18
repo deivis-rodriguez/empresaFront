@@ -1,24 +1,6 @@
-<h1 style="text-align: center;">{{title}}</h1>
+<app-header [titulo]="title" ></app-header>
+<router-outlet></router-outlet>
 
-<h3>Datos de empleados</h3>
-<div *ngFor="let empleado of listaEmpleados; let i = index">
-    <h4>empleado {{i+1}}</h4>
-    <p [ngStyle]="{'background':(empleado.siDetalles)?'#f23445':'#005321'}">nombre: {{empleado.nombre}}</p>
-    <p *ngIf="empleado.edad>= 25; else menor25">ya pasó de los 25</p>
-    <ng-template #menor25>
-        <p>todavía no pasa los 25</p>
-    </ng-template>
-    <div [ngSwitch]="empleado.area">
-        <p *ngSwitchCase="'seguridad'">Área seguridad</p>
-        <p *ngSwitchCase="'informatica'">Área informatica</p>
-        <p *ngSwitchCase="'administrativa'">Área administrativa</p>
-        <p *ngSwitchCase="'d'">Área financiera</p>
-        <p *ngSwitchDefault>Área desconocida</p>
-    </div>
-    <p [ngClass]="{'clase1': false, 'clase2':true}">Historico de pagos: {{empleado.pagos}} </p>
-    <input type="text" [(ngModel)]="empleado.nombre">
-    <button *ngIf="!empleado.siDetalles" (click)="saludar()">Detalles</button>
-</div>
 <!--
 if(condicion){
     return valor1;

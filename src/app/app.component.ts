@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { empleados } from './empleados';
 
 @Component({
   selector: 'app-root',
@@ -8,13 +7,8 @@ import { empleados } from './empleados';
 })
 export class AppComponent {
   public title: string = 'aplicación de mi empresa';
-  public listaEmpleados = empleados;
 
   constructor() {
-  }
-
-  saludar(){
-    alert('holas')
   }
 
 }

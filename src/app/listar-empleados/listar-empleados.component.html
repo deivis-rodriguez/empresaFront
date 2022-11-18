@@ -1,0 +1,17 @@
+<h3>Datos de empleados</h3>
+<div class="contenedor">
+    <div class="contenedor-lista">
+        <div *ngFor="let empleado of listaEmpleados; let i = index">
+            <h4>empleado {{i+1}}</h4>
+            <p [ngStyle]="{'background':(empleado.siDetalles)?'#f23445':'#005321'}">nombre: {{empleado.nombre}}</p>
+            <input type="text" [(ngModel)]="empleado.nombre">
+            <p>{{empleado.area}}</p>
+            <p [ngClass]="{'clase1': false, 'clase2':true}">Historico de pagos: {{empleado.pagos}} </p>
+            <button *ngIf="!empleado.siDetalles" (click)="mostrarDetalle(i)">Detalles</button>
+        </div>
+    </div>
+    <app-detalle-empleado *ngIf="mostrar" [empleado]="listaEmpleados[indice]" (pagoEvent)="actualizarPago($event)"></app-detalle-empleado>
+</div>
+
+
+

@@ -1,0 +1,19 @@
+<p *ngIf="empleado.edad>= 25; else menor25">ya pasó de los 25</p>
+<ng-template #menor25>
+    <p>todavía no pasa los 25</p>
+</ng-template>
+<div [ngSwitch]="empleado.area">
+    <p *ngSwitchCase="'seguridad'">Área seguridad</p>
+    <p *ngSwitchCase="'informatica'">Área informatica</p>
+    <p *ngSwitchCase="'administrativa'">Área administrativa</p>
+    <p *ngSwitchCase="'d'">Área financiera</p>
+    <p *ngSwitchDefault>Área desconocida</p>
+</div>
+<input type="text" [(ngModel)]="empleado.area">
+<button (click)="actualizarArea(empleado.area)">Guardar</button>
+<div>
+    <label for="">monto a pagar: </label>
+    <input type="text" [(ngModel)]="pago">
+</div>
+<button (click)="actualizarPago(pago)" >hacer pago</button>
+
