@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { empleados } from '../empleados';
 import { Location } from '@angular/common';
+import { EmpleadoService } from '../services/empleado.service';
+import { Empleado } from '../model/empleado';
 
 @Component({
   selector: 'app-listar-empleados',
@@ -8,31 +9,18 @@ import { Location } from '@angular/common';
   styleUrls: ['./listar-empleados.component.css']
 })
 export class ListarEmpleadosComponent implements OnInit {
-  public listaEmpleados = empleados;
+  public listaEmpleados: Empleado[];
   public mostrar: boolean = false;
   public indice!: number;
-  
 
-  constructor(private location: Location) { }
+  constructor(private location: Location, private empleadoService: EmpleadoService) {
+    this.listaEmpleados = []
+  }
 
   ngOnInit(): void {
-  }
-
-  mostrarDetalle(index: number) {
-    this.mostrar = !this.mostrar;
-    this.indice = index;
-  }
-
-  actualizarArea(area:string){
-    console.log(area)
-    this.listaEmpleados[this.indice].area = area;
-  }
-
-  actualizarPago(pago:number){
-    console.log(pago)
-    this.listaEmpleados[this.indice].pagos.push(pago);
-    console.log(this.listaEmpleados[this.indice].pagos)
-    this.location.back()
+    this.empleadoService.listarEmpleados().subscribe((empleados) => {
+      this.listaEmpleados = empleados;
+    });
   }
 
 }

@@ -3,14 +3,13 @@
     <div class="contenedor-lista">
         <div *ngFor="let empleado of listaEmpleados; let i = index">
             <h4>empleado {{i+1}}</h4>
-            <p [ngStyle]="{'background':(empleado.siDetalles)?'#f23445':'#005321'}">nombre: {{empleado.nombre}}</p>
-            <input type="text" [(ngModel)]="empleado.nombre">
-            <p>{{empleado.area}}</p>
-            <p [ngClass]="{'clase1': false, 'clase2':true}">Historico de pagos: {{empleado.pagos}} </p>
-            <button *ngIf="!empleado.siDetalles" (click)="mostrarDetalle(i)">Detalles</button>
+            <p>nombre: {{empleado.nombre}} {{empleado.apellido}}</p>
+            <p>cargo: {{empleado.cargo}}</p>
+            <p>salario: {{empleado.salario}}</p>
+            <p>Historico de pagos: {{empleado.pagos}} </p>
+            <button>Detalles</button>
         </div>
     </div>
-    <app-detalle-empleado *ngIf="mostrar" [empleado]="listaEmpleados[indice]" (pagoEvent)="actualizarPago($event)"></app-detalle-empleado>
 </div>
 
 

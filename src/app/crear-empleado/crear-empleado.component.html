@@ -1,0 +1,26 @@
+<h3 style="text-align: center;">Ingresar nuevo empleado</h3>
+
+<div (submit)="guardarEmpleado()" class="contenedor">
+    <form  #empleadoForm="ngForm">
+        <div>
+            <label for="nombre">nombre: </label>
+            <input name="nombre" [(ngModel)]="empleado.nombre" id="nombre" type="text" required>
+        </div>
+        <div>
+            <label for="apellido">apellido: </label>
+            <input name="apellido" [(ngModel)]="empleado.apellido" id="apellido" type="text" required>
+        </div>
+        <div>
+            <label for="cargo">cargo: </label>
+            <input name="cargo" [(ngModel)]="empleado.cargo" id="cargo" type="text" required>
+        </div>
+        <div>
+            <label for="salario">salario: </label>
+            <input name="salario" [(ngModel)]="empleado.salario" id="salario" type="text">
+        </div>
+        <div>
+            <button>Cancelar</button>
+            <button type="submit" [disabled]="!empleadoForm.form.valid">Guardar</button>
+        </div>
+    </form>
+</div>
