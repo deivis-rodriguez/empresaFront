@@ -1,5 +1,8 @@
+import { Location } from '@angular/common';
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { Empleado } from '../model/empleado';
+import { EmpleadoService } from '../services/empleado.service';
 
 @Component({
   selector: 'app-detalle-empleado',
@@ -15,18 +18,27 @@ export class DetalleEmpleadoComponent implements OnInit {
 
   public pago: string = '';
 
-  constructor() {
+  constructor(private location: Location ,private empleadoService: EmpleadoService, private ruta: ActivatedRoute) {
+    this.empleado = new Empleado('', '', '', '', [])
   }
 
   ngOnInit(): void {
+    let id: string = String(this.ruta.snapshot.paramMap.get('id'));
+    this.empleadoService.obtenerEmpleado(id).subscribe((empleado) => {
+      this.empleado = empleado;
+    });
   }
 
-  actualizarArea(area: string) {
-    this.areaEvent.emit(area);
+  editar(){
+    
   }
 
-  actualizarPago(pago: string){
+  actualizarPago(pago: string) {
     this.pagoEvent.emit(parseInt(pago))
+  }
+
+  regresar(){
+    this.location.back()
   }
 
 }

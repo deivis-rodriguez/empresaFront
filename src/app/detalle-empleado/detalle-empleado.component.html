@@ -1,19 +1,20 @@
-<!--<p *ngIf="empleado.edad>= 25; else menor25">ya pasó de los 25</p>
-<ng-template #menor25>
-    <p>todavía no pasa los 25</p>
-</ng-template>
-<div [ngSwitch]="empleado.area">
-    <p *ngSwitchCase="'seguridad'">Área seguridad</p>
-    <p *ngSwitchCase="'informatica'">Área informatica</p>
-    <p *ngSwitchCase="'administrativa'">Área administrativa</p>
-    <p *ngSwitchCase="'d'">Área financiera</p>
-    <p *ngSwitchDefault>Área desconocida</p>
-</div>
-<input type="text" [(ngModel)]="empleado.area">
-<button (click)="actualizarArea(empleado.area)">Guardar</button>
+<h3>detalles del empleado</h3>
 <div>
-    <label for="">monto a pagar: </label>
-    <input type="text" [(ngModel)]="pago">
+    <h4>{{empleado.nombre}}</h4>
+    <p>nombre: {{empleado.nombre}} {{empleado.apellido}}</p>
+    <p>cargo: {{empleado.cargo}}</p>
+    <p>salario: {{empleado.salario}}</p>
+    <p>Historico de pagos: {{empleado.pagos}} </p>
+    <h5>proyectos</h5>
+    <div class="proyecto" *ngFor="let proyecto of empleado.proyectos">
+        <p>Nombre proyecto: {{proyecto.nombre}}</p>
+        <p>Código proyecto: {{proyecto.codigo}}</p>
+        <p>Fecha de Inicio: {{proyecto.fechaInicio}}</p>
+        <p>Fecha final: {{proyecto.fechaFin}}</p>
+    </div>
+    <div>
+        <button (click)="regresar()">Regresar</button>
+        <button [routerLink]="['/editar-empleado', empleado.idEmpleado]">Editar</button>
+        <button>Eliminar</button>
+    </div>
 </div>
-<button (click)="actualizarPago(pago)" >hacer pago</button>-->
-

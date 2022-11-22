@@ -7,7 +7,7 @@
             <p>cargo: {{empleado.cargo}}</p>
             <p>salario: {{empleado.salario}}</p>
             <p>Historico de pagos: {{empleado.pagos}} </p>
-            <button>Detalles</button>
+            <button [routerLink]="['/detalle-empleado', empleado.idEmpleado]">Detalles</button>
         </div>
     </div>
 </div>

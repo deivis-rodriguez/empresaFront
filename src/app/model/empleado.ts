@@ -6,6 +6,7 @@ export class Empleado {
     salario: string;
     cargo: string;
     pagos: Array<number>;
+    proyectos!: Array<{nombre:string, codigo: string,fechaInicio: Date, fechaFin: Date}>;
 
     constructor(nombre: string, apellido: string, salario: string, cargo: string, pagos: Array<number>){
         this.apellido = apellido;

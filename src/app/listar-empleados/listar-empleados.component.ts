@@ -13,7 +13,7 @@ export class ListarEmpleadosComponent implements OnInit {
   public mostrar: boolean = false;
   public indice!: number;
 
-  constructor(private location: Location, private empleadoService: EmpleadoService) {
+  constructor( private empleadoService: EmpleadoService) {
     this.listaEmpleados = []
   }
 

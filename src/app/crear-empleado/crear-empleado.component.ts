@@ -19,11 +19,12 @@ export class CrearEmpleadoComponent implements OnInit {
   ngOnInit(): void {
   }
 
-
-  guardarEmpleado(){
-    this.empleadoService.crearEmpleado(this.empleado).subscribe((empleado)=>{
+  guardarEmpleado() {
+    this.empleadoService.crearEmpleado(this.empleado).subscribe((empleado) => {
       alert('empleado guardado');
       this.location.back()
     })
   }
+
+  actualizarIn(){}
 }
