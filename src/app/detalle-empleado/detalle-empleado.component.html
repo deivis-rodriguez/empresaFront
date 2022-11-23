@@ -15,6 +15,6 @@
     <div>
         <button (click)="regresar()">Regresar</button>
         <button [routerLink]="['/editar-empleado', empleado.idEmpleado]">Editar</button>
-        <button>Eliminar</button>
+        <button (click)="eliminarEmpleado()" >Eliminar empleado</button>
     </div>
 </div>

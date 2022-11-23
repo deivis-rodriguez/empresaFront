@@ -18,26 +18,31 @@ export class DetalleEmpleadoComponent implements OnInit {
 
   public pago: string = '';
 
-  constructor(private location: Location ,private empleadoService: EmpleadoService, private ruta: ActivatedRoute) {
+  constructor(private location: Location, private empleadoService: EmpleadoService, private ruta: ActivatedRoute) {
     this.empleado = new Empleado('', '', '', '', [])
   }
 
   ngOnInit(): void {
     let id: string = String(this.ruta.snapshot.paramMap.get('id'));
-    this.empleadoService.obtenerEmpleado(id).subscribe((empleado) => {
-      this.empleado = empleado;
+    if (id != 'null') {
+      this.empleadoService.obtenerEmpleado(id).subscribe((empleado) => {
+        this.empleado = empleado;
+      });
+    }
+
+  }
+
+  eliminarEmpleado() {
+    let id: string = String(this.ruta.snapshot.paramMap.get('id'));
+
+    this.empleadoService.eliminarEmpleado(id).subscribe(() => {
+      alert('empleado eliminado exitosamente')
+      this.regresar()
     });
+
   }
 
-  editar(){
-    
-  }
-
-  actualizarPago(pago: string) {
-    this.pagoEvent.emit(parseInt(pago))
-  }
-
-  regresar(){
+  regresar() {
     this.location.back()
   }
 

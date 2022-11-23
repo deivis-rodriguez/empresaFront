@@ -1,6 +1,6 @@
-<h3 style="text-align: center;">Ingresar nuevo empleado</h3>
+<h3 style="text-align: center;">{{titulo}}</h3>
 
-<div  class="contenedor">
+<div class="contenedor">
     <form (submit)="guardarEmpleado()" #empleadoForm="ngForm">
         <fieldset>
             <legend>Datos Básicos</legend>
@@ -21,19 +21,34 @@
                 <input name="salario" [(ngModel)]="empleado.salario" id="salario" type="text">
             </div>
         </fieldset>
-        
+
         <fieldset>
             <legend>Proyectos</legend>
-            <button (click)="actualizarIn()">+</button>
-            <div *ngFor="">
-                <label for="salario">salario: </label>
-                <input name="salario" [(ngModel)]="empleado.salario" id="salario" type="text">
+            <button type="button" (click)="actualizarIn($event)">+</button>
+            <button type="button" (click)="actualizarIn($event)">-</button>
+            <div *ngFor="let proyecto of empleado.proyectos; let i = index">
+                <h4>proyecto {{i+1}}</h4>
+                <div>
+                    <label for="nProyecto">Nombre Proyecto: </label>
+                    <input name="nProyecto" [(ngModel)]="proyecto.nombre" id="nProyecto" type="text">
+                </div>
+                <div>
+                    <label for="cProyecto">Código Proyecto: </label>
+                    <input name="cProyecto" [(ngModel)]="proyecto.codigo" id="cProyecto" type="text">
+                </div>
+                <div>
+                    <label for="fiProyecto">Fecha Inicio: </label>
+                    <input name="fiProyecto" [(ngModel)]="proyecto.fechaInicio" id="fiProyecto" type="text">
+                </div>
+                <div>
+                    <label for="ffProyecto">Fecha Fin: </label>
+                    <input name="ffProyecto" [(ngModel)]="proyecto.fechaFin" id="ffProyecto" type="text">
+                </div>
             </div>
         </fieldset>
-        
 
         <div>
-            <button>Cancelar</button>
+            <button type="button">Cancelar</button>
             <button type="submit" [disabled]="!empleadoForm.form.valid">Guardar</button>
         </div>
     </form>

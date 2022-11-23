@@ -1,5 +1,6 @@
 import { NgModule } from "@angular/core";
 import { Routes, RouterModule } from "@angular/router";
+import { BuscarEmpleadoComponent } from "./buscar-empleado/buscar-empleado.component";
 import { CrearEmpleadoComponent } from "./crear-empleado/crear-empleado.component";
 import { DetalleEmpleadoComponent } from "./detalle-empleado/detalle-empleado.component";
 import { EditarEmpleadoComponent } from "./editar-empleado/editar-empleado.component";
@@ -12,7 +13,8 @@ const routes: Routes = [
     { path: 'lista-empleados', component: ListarEmpleadosComponent },
     { path: 'agregar-empleado', component: CrearEmpleadoComponent },
     { path: 'detalle-empleado/:id', component: DetalleEmpleadoComponent },
-    { path: 'editar-empleado/:id', component: EditarEmpleadoComponent }
+    { path: 'editar-empleado/:id', component: EditarEmpleadoComponent },
+    { path: 'buscar-empleado', component: BuscarEmpleadoComponent }
 ];
 
 @NgModule({

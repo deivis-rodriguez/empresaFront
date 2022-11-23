@@ -1,11 +1,11 @@
 export class Empleado {
     
     idEmpleado!: string;
-    nombre: string;
-    apellido: string;
-    salario: string;
-    cargo: string;
-    pagos: Array<number>;
+    nombre!: string;
+    apellido!: string;
+    salario!: string;
+    cargo!: string;
+    pagos!: Array<number>;
     proyectos!: Array<{nombre:string, codigo: string,fechaInicio: Date, fechaFin: Date}>;
 
     constructor(nombre: string, apellido: string, salario: string, cargo: string, pagos: Array<number>){

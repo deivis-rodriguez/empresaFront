@@ -1,0 +1,6 @@
+<div>
+    <input [(ngModel)]="nombreEmpleado" type="text" name="" id="buscar" placeholder="nombre empleado">
+    <button (click)="buscarPorNombre()">Buscar</button>
+</div>
+<app-detalle-empleado [ngStyle]="{'display': (!!empleado) ? 'block':'none' }" [empleado]="empleado">
+</app-detalle-empleado>
