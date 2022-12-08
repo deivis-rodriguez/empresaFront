@@ -1,7 +1,7 @@
 import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import { Empleado } from '../model/empleado';
-import { EmpleadoService } from '../services/empleado.service';
+import { Empleado } from '../../model/empleado';
+import { EmpleadoService } from '../../services/empleado.service';
 
 @Component({
   selector: 'app-crear-empleado',

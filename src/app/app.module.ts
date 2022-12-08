@@ -2,17 +2,20 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
-import { AppComponent } from './app.component';
-import { HeaderComponent } from './header/header.component';
-import { ListarEmpleadosComponent } from './listar-empleados/listar-empleados.component';
-import { InicioComponent } from './inicio/inicio.component';
-import { DetalleEmpleadoComponent } from './detalle-empleado/detalle-empleado.component';
+import { AppComponent } from './components/app.component';
+import { HeaderComponent } from './components/header/header.component';
+import { ListarEmpleadosComponent } from './components/listar-empleados/listar-empleados.component';
+import { InicioComponent } from './components/inicio/inicio.component';
+import { DetalleEmpleadoComponent } from './components/detalle-empleado/detalle-empleado.component';
 import { EmpleadoService } from './services/empleado.service';
-import { CrearEmpleadoComponent } from './crear-empleado/crear-empleado.component';
-import { EditarEmpleadoComponent } from './editar-empleado/editar-empleado.component';
-import { BuscarEmpleadoComponent } from './buscar-empleado/buscar-empleado.component';
+import { CrearEmpleadoComponent } from './components/crear-empleado/crear-empleado.component';
+import { EditarEmpleadoComponent } from './components/editar-empleado/editar-empleado.component';
+import { BuscarEmpleadoComponent } from './components/buscar-empleado/buscar-empleado.component';
+import { LoginComponent } from './components/login/login.component';
+import { AyudaComponent } from './components/ayuda/ayuda.component';
+import { AuthInterceptorService } from './services/auth-interceptor.service';
 
 @NgModule({
   declarations: [
@@ -23,7 +26,9 @@ import { BuscarEmpleadoComponent } from './buscar-empleado/buscar-empleado.compo
     DetalleEmpleadoComponent,
     CrearEmpleadoComponent,
     EditarEmpleadoComponent,
-    BuscarEmpleadoComponent
+    BuscarEmpleadoComponent,
+    LoginComponent,
+    AyudaComponent
   ],
   imports: [
     BrowserModule,
@@ -31,7 +36,7 @@ import { BuscarEmpleadoComponent } from './buscar-empleado/buscar-empleado.compo
     AppRoutingModule,
     HttpClientModule
   ],
-  providers: [EmpleadoService],
+  providers: [{ provide:HTTP_INTERCEPTORS, useClass:AuthInterceptorService, multi:true }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

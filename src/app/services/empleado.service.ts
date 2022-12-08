@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Empleado } from '../model/empleado';
+import { TokenStorageService } from './token-storage.service';
 
 @Injectable({
   providedIn: 'root'
@@ -9,12 +10,12 @@ export class EmpleadoService {
 
   private empleadoUrl: string;
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, private tokenStorage: TokenStorageService) {
     this.empleadoUrl = 'http://localhost:8080/';
   }
 
   public listarEmpleados() {
-    return this.http.get<Empleado[]>(`${this.empleadoUrl}empleados`)
+    return this.http.get<Empleado[]>(`${this.empleadoUrl}empleados`, { headers:{"Authorization": `Bearer ${this.tokenStorage.getToken()}`} })
   }
 
   public crearEmpleado(empleado: Empleado) {

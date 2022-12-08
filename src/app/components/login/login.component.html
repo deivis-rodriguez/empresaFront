@@ -1,0 +1,17 @@
+<form (submit)="login()" #loginForm="ngForm">
+    <div>
+        <label for="username">Username: </label>
+        <input type="text" name="username" id="username" placeholder="username" [(ngModel)]="loginData.username" required>
+    </div>
+    <div>
+        <label for="password">Password: </label>
+        <input type="password" name="password" id="password" placeholder="password" [(ngModel)]="loginData.password" required>
+    </div>
+    <div>
+        <button type="submit" [disabled]="!loginForm.form.valid">Iniciar Sesión</button>
+        <div>¿no tienes una cuenta? <a>registrate</a></div>
+    </div>
+    <div *ngIf="error" style="color: #dc3636;">
+        no se pudo autenticar en la aplicación: {{msgError}}
+    </div>
+</form>
